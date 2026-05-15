@@ -26,6 +26,8 @@ services:
           prepend: "https://"
       - key: DATABASE_URL
         sync: false
+      - key: REDIS_URL
+        sync: false
     disk:
       name: media
       mountPath: /app/media
