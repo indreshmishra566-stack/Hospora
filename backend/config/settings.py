@@ -6,6 +6,7 @@ Django Settings
 from pathlib import Path
 from datetime import timedelta
 from decouple import config
+import dj_database_url
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -75,14 +76,17 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 # Database
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': config('DB_NAME', default='hospora'),
-        'USER': config('DB_USER', default='postgres'),
-        'PASSWORD': config('DB_PASSWORD', default='postgres'),
-        'HOST': config('DB_HOST', default='db'),
-        'PORT': config('DB_PORT', default='5432'),
-    }
+    'default': dj_database_url.config(
+        default=(
+            f"postgres://{config('DB_USER', default='postgres')}:"
+            f"{config('DB_PASSWORD', default='postgres')}@"
+            f"{config('DB_HOST', default='db')}:"
+            f"{config('DB_PORT', default='5432')}/"
+            f"{config('DB_NAME', default='hospora')}"
+        ),
+        conn_max_age=600,
+        ssl_require=not DEBUG,
+    )
 }
 
 AUTH_USER_MODEL = 'users.User'
