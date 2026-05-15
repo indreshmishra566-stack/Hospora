@@ -6,6 +6,7 @@ const pageTitles: Record<string, string> = {
   '/dashboard': 'Dashboard',
   '/patients': 'Patients',
   '/appointments': 'Appointments',
+  '/queue': 'OPD Queue',
   '/staff': 'Staff Management',
   '/departments': 'Departments',
   '/medical-records': 'Medical Records',

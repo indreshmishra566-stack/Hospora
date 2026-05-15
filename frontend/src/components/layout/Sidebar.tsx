@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
 import {
-  LayoutDashboard, Users, Calendar, UserCheck, Building2,
+  LayoutDashboard, Users, Calendar, ListOrdered, UserCheck, Building2,
   FileText, Receipt, Pill, FlaskConical, Settings, LogOut,
   Menu, X, Activity, ChevronRight, Lock,
 } from 'lucide-react'
@@ -20,6 +20,7 @@ const navItems: NavItem[] = [
   { to: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
   { to: '/patients', label: 'Patients', icon: Users },
   { to: '/appointments', label: 'Appointments', icon: Calendar },
+  { to: '/queue', label: 'OPD Queue', icon: ListOrdered },
   { to: '/staff', label: 'Staff', icon: UserCheck, roles: ['hospital_admin', 'super_admin'] },
   { to: '/departments', label: 'Departments', icon: Building2 },
   { to: '/medical-records', label: 'Medical Records', icon: FileText },

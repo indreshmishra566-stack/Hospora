@@ -108,6 +108,15 @@ export const appointmentsApi = {
   delete: (id: number) => del(`/appointments/${id}/`),
 }
 
+// ─── Queue API ────────────────────────────────────────────────────────────────
+
+export const queueApi = {
+  list: (params?: object) => get('/queue/', { params }),
+  create: (data: unknown) => post('/queue/', data),
+  updateStatus: (id: number, action: string) => post('/queue/' + id + '/' + action + '/'),
+  summary: (params?: object) => get('/queue/summary/', { params }),
+}
+
 // ─── Staff API ────────────────────────────────────────────────────────────────
 
 export const staffApi = {

@@ -18,6 +18,7 @@ import BillingPage from '@/pages/Billing'
 import PharmacyPage from '@/pages/Pharmacy'
 import LabPage from '@/pages/Lab'
 import SettingsPage from '@/pages/Settings'
+import QueuePage from '@/pages/Queue'
 
 function RequireAuth({ children }: { children: React.ReactNode }) {
   const { isAuthenticated, isLoading } = useAuth()
@@ -47,6 +48,7 @@ function AppRoutes() {
         <Route path="/patients" element={<PatientsPage />} />
         <Route path="/patients/:id" element={<PatientDetailPage />} />
         <Route path="/appointments" element={<AppointmentsPage />} />
+        <Route path="/queue" element={<QueuePage />} />
         <Route path="/staff" element={<StaffPage />} />
         <Route path="/departments" element={<DepartmentsPage />} />
         <Route path="/medical-records" element={<MedicalRecordsPage />} />

@@ -1,6 +1,6 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import {
-  dashboardApi, patientsApi, appointmentsApi, staffApi,
+  dashboardApi, patientsApi, appointmentsApi, queueApi, staffApi,
   departmentsApi, medicalRecordsApi, billingApi, pharmacyApi, labApi,
 } from '@/api/client'
 
@@ -227,5 +227,29 @@ export const useUpdateLabTest = () => {
   return useMutation({
     mutationFn: ({ id, data }: { id: number; data: unknown }) => labApi.update(id, data),
     onSuccess: () => qc.invalidateQueries({ queryKey: ['lab'] }),
+  })
+}
+
+// ─── Queue ───────────────────────────────────────────────────────────────────
+
+export const useQueueTickets = (params?: object) =>
+  useQuery({ queryKey: ['queue', params], queryFn: () => queueApi.list(params) })
+
+export const useQueueSummary = (params?: object) =>
+  useQuery({ queryKey: ['queue', 'summary', params], queryFn: () => queueApi.summary(params) })
+
+export const useCreateQueueTicket = () => {
+  const qc = useQueryClient()
+  return useMutation({
+    mutationFn: queueApi.create,
+    onSuccess: () => qc.invalidateQueries({ queryKey: ['queue'] }),
+  })
+}
+
+export const useUpdateQueueStatus = () => {
+  const qc = useQueryClient()
+  return useMutation({
+    mutationFn: ({ id, action }: { id: number; action: string }) => queueApi.updateStatus(id, action),
+    onSuccess: () => qc.invalidateQueries({ queryKey: ['queue'] }),
   })
 }

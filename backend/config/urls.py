@@ -23,4 +23,5 @@ urlpatterns = [
     path('api/pharmacy/', include('apps.pharmacy.urls')),
     path('api/lab/', include('apps.lab.urls')),
     path('api/dashboard/', include('apps.dashboard.urls')),
+    path('api/queue/', include('apps.queue.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

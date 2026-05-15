@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'apps.lab',
     'apps.departments',
     'apps.dashboard',
+    'apps.queue',
 ]
 
 MIDDLEWARE = [
